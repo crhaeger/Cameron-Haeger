@@ -1,18 +1,6 @@
-# macOS system files
+~$*.xlsx
+~$*.xlsm
+~$*.docx
+~$*.pptx
 .DS_Store
-
-# Environment files / secrets
-.env
-.env.*
-
-# Temporary files
-*.tmp
-*.log
-
-# Editor settings
-.vscode/
-.idea/
-
-# Python cache files
-__pycache__/
-*.pyc
+Thumbs.db
