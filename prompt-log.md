@@ -19,3 +19,15 @@ Some of the initial instructions did not exactly match the course onboarding che
 
 **How I reviewed or corrected it:**  
 I compared the suggestions with the course onboarding checklist and corrected the files to match the course requirements.
+
+
+
+## October 25, 2026 – Stage 2 FX Hedging Model Specification
+
+**AI Prompt:** I asked ChatGPT to help develop a 2–3-page FX hedging model specification for a €12 million receivable due in 91 days, including required inputs, workbook structure, formulas, sensitivity analysis, and validation rules.
+
+**AI Draft:** ChatGPT generated an initial specification exceeding 200 lines, covering eight required sections and the calculations for forward, money-market, and currency-option strategies.
+
+**Human Correction:** I reviewed the draft and requested a shorter, more organized version that preserved the ten named inputs, required formulas, and validation checks. I also corrected the GitHub file location to `capabilities/fx-hedging/spec.md` and checked the Markdown formatting.
+
+**Final Result:** The revised specification is approximately 121 lines and provides a clearer blueprint for building and testing the Excel hedging model in Stage 3.
