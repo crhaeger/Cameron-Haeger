@@ -10,5 +10,5 @@ Scenario: Transmission-Parts
 Exposure: EUR 12,000,000 receivable in 91 days.
 
 ## Files
-- spec.md: Model specifications (Stage 2)
+- - [spec.md](spec.md): Model specification (Stage 2)
 - model.xlsx: Hedging model (Stage 3)
