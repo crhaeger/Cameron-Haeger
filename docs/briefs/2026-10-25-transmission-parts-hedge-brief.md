@@ -32,7 +32,12 @@ Our indicative 91-day forward rate is $1.1653 per euro, which would lock in $13,
 
 This analysis assumes the full receivable arrives in 91 days, the amount does not change, and the company can access the quoted forward contract and option. The final model must verify the spot quote, applicable interest rates, day-count conventions, and transaction costs.
 
-I expect the forward hedge to provide the most predictable proceeds because it fixes the exchange rate without an option premium. However, the EUR put could prove more attractive if the euro appreciates sufficiently to offset its premium. This hypothesis would be challenged if the modeled net option proceeds consistently outperform the forward across realistic exchange-rate scenarios, or if actual forward terms materially differ from the indicative quote.
+
+I expect the forward hedge to deliver the most predictable USD proceeds because it locks the EUR/USD rate without an option premium. The hypothesis would be challenged if the model shows that the EUR put produces higher net USD proceeds across most tested exchange-rate scenarios after its premium.
+
+## How I Would Know I Was Wrong
+
+My hypothesis would be challenged if the EUR put option produces higher net USD proceeds than the forward hedge across most of the exchange-rate scenarios tested, after accounting for the option premium. I would also reconsider my preference for the forward if the money-market hedge produces better net proceeds with comparable certainty and lower overall costs. I will use the completed model to compare each strategy's net USD proceeds under the same assumptions and settlement date before making a final recommendation.
 
 ## Next Steps
 
