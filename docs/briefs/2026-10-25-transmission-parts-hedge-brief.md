@@ -6,7 +6,7 @@ date: 2026-10-25
 status: committed
 hypothesis: "A forward hedge will provide the most predictable USD proceeds, while a EUR put may offer a better balance of downside protection and upside potential after accounting for its premium."
 title: "FX Hedging Executive Brief"
-scenario: "Transmission-Parts"
+scenario: "transmission-parts"
 llm_used: "ChatGPT (GPT-6)"
 ---
 
