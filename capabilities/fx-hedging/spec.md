@@ -11,12 +11,12 @@ The workbook will use these ten exact named ranges. Market-dependent values are 
 | Name | Placeholder | Unit | Stage 4 Source |
 |---|---|---|---|
 | FC_AMT | 12,000,000 | EUR | Assigned scenario |
-| S0_in | TBD | USD/EUR | ECB EUR/USD reference rate |
+| S0_in | 1.1188 | USD/EUR | ECB EUR/USD reference rate, October 26, 2026 |
 | F0_in | 1.1653 | USD/EUR | Scenario; verify 91-day forward quote |
 | R_USD | 4.22% | Annual % | Federal Reserve; verify USD investment rate |
 | R_FC | 2.666% | Annual % | EURIBOR; verify EUR borrowing rate |
-| K_PUT | S0_in | USD/EUR | At-the-money EUR put quote |
-| K_CALL | S0_in | USD/EUR | At-the-money EUR call quote |
+| K_PUT | 1.1188 | USD/EUR | Assumed at-the-money strike based on S0_in |
+| K_CALL | 1.1188 | USD/EUR | Assumed at-the-money strike based on S0_in |
 | PREM_PUT | 0.0147 | USD/EUR | Scenario; verify put premium |
 | PREM_CALL | 0.0199 | USD/EUR | Scenario; verify call premium |
 | T_DAYS | 91 | Days | Assigned scenario |
@@ -125,6 +125,19 @@ The Stage 3 workbook must pass the following checks:
 6. **Put option:** At `S_T = K_PUT`, proceeds equal `K_PUT × FC_AMT + FV_PREM_PUT`. Confirm the payoff behaves correctly above and below the strike.
 7. **Sensitivity:** All 11 scenarios run from −5% to +5% in 1% increments, with no missing results.
 8. **Documentation:** The Notes & Assumptions tab records market-data sources, observation dates, and access dates. Workbook formatting follows the Legend & Key.
+
+### Expected Numerical Validation Results
+
+Using the provisional inputs in Section 2 (EUR/USD spot = 1.1188, forward = 1.1653, USD interest = 4.22%, EUR interest = 2.666%, and 91 days on a 360-day basis):
+
+- **Unhedged base case:** $13,425,600.00 at `S_T = S0_in`.
+- **Forward hedge:** $13,983,600.00 across all 11 scenarios.
+- **Money-market hedge:** Borrow approximately €11,919,672.66 today, convert and invest the proceeds in USD, and receive approximately $13,477,984.97 at maturity.
+- **EUR put option:** At `S_T = K_PUT = 1.1188`, expected net proceeds are $13,247,318.30 after the $178,281.70 future-value premium cost.
+- **EUR call option (payable reference):** At `S_T = K_CALL = 1.1188`, the gross exercise amount is $13,425,600.00 and the future-value premium cost is $241,347.33. Expected total USD cost is $13,666,947.33 for a EUR payable.
+- **Covered interest-rate parity:** The implied forward rate is approximately 1.123165 USD/EUR, compared with the quoted 1.1653. The discrepancy is approximately 3.75%, exceeding the 0.05% tolerance. Flag this as a validation warning because the provisional market inputs are not parity-consistent.
+
+All expected figures are provisional model checks, not verified executable market quotes. Recalculate them if Stage 4 updates the inputs.
 
 ## 8. Outputs
 
