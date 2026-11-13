@@ -25,6 +25,10 @@ After generating the workbook, I manually reviewed the calculations, tested form
 
 **Limitation:** This improvement verifies three key output cells rather than every calculated cell in the workbook.
 
+**Additional Workbook-Wide Audit:** To address the limitation of checking only three cells, I expanded the formula-integrity review using Excel's `SUMPRODUCT` and `ISFORMULA` functions across the original calculation ranges. The audit identified 4 formulas in Forward Hedge, 7 in Money-Market Hedge, 8 in Options Hedge, 110 in Sensitivity, and 19 in Notes & Assumptions, totaling 148 formulas. The Inputs and Cover worksheets contained no formulas in the inspected ranges.
+
+**Verification:** The results are documented in the Notes & Assumptions worksheet, with the reconciled formula count in B34 and a PASS status in B41. This confirms that the formula count matches the expected 148. However, the check verifies formula presence, not the mathematical accuracy of every formula. A complete integrity review would also compare formulas against expected calculations and identify incorrect references or unexpected changes.
+
 ### Finding 2: Insufficient Put Option Payoff Validation
 
 **Issue:** The original put payoff check displayed a value linked from the Options Hedge worksheet but did not independently verify the option's behavior across the sensitivity scenarios.
