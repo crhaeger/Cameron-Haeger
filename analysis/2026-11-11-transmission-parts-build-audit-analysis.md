@@ -47,6 +47,16 @@ After generating the workbook, I manually reviewed the calculations, tested form
 
 The discrepancy exceeds the 0.05% tolerance. I retained the provisional inputs rather than changing them to force the model to pass. The rates and quotes will require further verification in Stage 4.
 
+### Finding 4: Section 8 Output Compliance Review
+
+**Issue:** The original audit did not explicitly evaluate whether the completed workbook satisfied the five output requirements established in Section 8 of the FX hedging specification.
+
+**Review:** I compared the workbook against the strategy summary, base-case results, sensitivity analysis, risk assessment, and validation requirements. The Sensitivity worksheet includes four hedging strategies, 11 exchange-rate scenarios from -5% to +5%, a base-case comparison, hedge profit calculations, and a line chart. The Options Hedge worksheet documents the put premium, minimum protected proceeds, and call payable reference. The Notes & Assumptions worksheet contains named-input, formula-integrity, parity, scenario, and put-payoff checks.
+
+**Verification:** All five output categories are represented in the workbook. The validation section also flags the 3.62% interest-rate parity deviation and identifies provisional market data requiring Stage 4 verification.
+
+**Remaining Limitation:** Although the required outputs are present, the underlying market assumptions have not yet been independently verified. Final financial conclusions remain provisional until Stage 4.
+
 ## 3. Model Testing and Results
 
 I reviewed the workbook's calculations against the Stage 2 specification.
