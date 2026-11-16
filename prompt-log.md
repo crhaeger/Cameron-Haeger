@@ -79,3 +79,11 @@ I compared the suggestions with the course onboarding checklist and corrected th
 After completing the audit, I saved the final corrected workbook as `model.xlsx` and uploaded it to `capabilities/fx-hedging/`. I also documented the findings and verification results in `analysis/2026-11-11-transmission-parts-build-audit-analysis.md`.
 
 **What I Learned:** AI helped me build the initial financial model, but reviewing the formulas and validation checks myself was important. I learned that a model can display correct results while still having weaknesses in how it tests those results. The audit improved the workbook's reliability and helped me better understand the calculations.
+
+## November 15, 2026 — Stage 4 Market Data Verification
+
+**AI assistance:** Used ChatGPT to help organize the market data verification process, compare Excel hedge calculations with the FX Hedging Lab, explain the covered-interest-parity discrepancy, and draft the Stage 4 verification memo.
+
+**My work:** Updated the Excel workbook with market reference inputs, documented sources and retrieval dates, checked the forward and money-market hedge calculations, compared sensitivity results with the FX Lab, and reviewed the final memo before committing it to GitHub.
+
+**Verification:** Confirmed the main calculations matched the FX Lab within rounding. Documented the 4.84% forward parity discrepancy and the $2,073.43 put-premium financing difference. Retained the assigned forward quote and documented the remaining limitations.
