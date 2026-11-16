@@ -57,6 +57,16 @@ The discrepancy exceeds the 0.05% tolerance. I retained the provisional inputs r
 
 **Remaining Limitation:** Although the required outputs are present, the underlying market assumptions have not yet been independently verified. Final financial conclusions remain provisional until Stage 4.
 
+### Finding 5: Formatting Compliance with Legend & Key
+
+**Issue:** The original audit did not explicitly verify whether the workbook's formatting followed the color conventions established in the Legend & Key worksheet.
+
+**Review:** I compared the workbook's formatting against the Legend & Key, which defines yellow for inputs, blue for assumptions, green for formulas, and gray for outputs. I reviewed the Inputs, Forward Hedge, Money-Market Hedge, Options Hedge, Sensitivity, and Notes & Assumptions worksheets to check whether the colors were applied consistently.
+
+**Verification:** The workbook follows the established formatting conventions. Input cells are highlighted yellow, formula cells are green, and output cells are gray. Blue is defined in the Legend & Key but is not used elsewhere because the workbook does not contain separate assumption cells requiring that designation. Red highlighting is also used to identify warnings, including the interest-rate parity discrepancy.
+
+**Result:** PASS — The workbook's formatting follows the Legend & Key requirements. No additional formatting corrections are required based on this review.
+
 ## 3. Model Testing and Results
 
 I reviewed the workbook's calculations against the Stage 2 specification.
