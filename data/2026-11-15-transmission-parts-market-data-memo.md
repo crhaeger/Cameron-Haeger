@@ -94,3 +94,21 @@ Stage 4 confirmed that my workbook recalculates consistently after the market-re
 Two issues remain explicitly documented: the substantial difference between the assigned forward quote and the CIP-implied rate, and the smaller put-proceeds difference caused by the premium-financing convention.
 
 For this scenario, the forward hedge provides the highest and most predictable USD proceeds within the tested range. I retained the original forward quote and documented the limitations of the market-rate proxies so the analysis remains transparent and reproducible.
+
+## 8. Market Data Sources and Limitations
+
+The following sources were used to document the market reference inputs for Stage 4. The market observations are dated November 13, 2026, and were retrieved on November 15, 2026.
+
+| Input | Reference Source | Website |
+|---|---|---|
+| EUR/USD spot exchange rate | European Central Bank (ECB) | https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/ |
+| USD interest rate | U.S. Department of the Treasury | https://home.treasury.gov/resource-center/data-chart-center/interest-rates |
+| EUR interest rate | EURIBOR reference-rate information | https://www.euribor-rates.eu/en/current-euribor-rates/ |
+| Forward exchange rate | Assigned course scenario | No independently verified bank quote |
+| Put and call premiums | Assigned course scenario | Assumed premiums; not live option quotes |
+
+**Rate selection:** The 1-year U.S. Treasury yield and 12-month EURIBOR were selected as publicly available USD and EUR interest-rate benchmarks. However, they are not equivalent to executable 91-day borrowing and lending rates.
+
+**Forward-rate limitation:** The assigned forward rate of 1.1653 USD/EUR was retained for consistency with the original scenario. A contemporaneous bank requote has not been obtained. Therefore, the forward-rate input should not be interpreted as a verified executable market quote.
+
+**Verification limitation:** These links identify the reference sources, but the precise retrieval time was not recorded. The market observations and rates should be independently checked against the dated source records before treating them as fully verified.
