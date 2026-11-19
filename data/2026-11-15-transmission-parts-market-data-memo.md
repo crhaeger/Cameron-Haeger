@@ -7,15 +7,15 @@
 
 ## 1. Market Data Verification
 
-For Stage 4, I updated my Excel workbook using market reference data dated November 13, 2026, and retrieved November 15, 2026. I recorded the sources and verification notes directly in the Inputs worksheet.
+For Stage 4, I updated my Excel workbook using market reference data dated November 13, 2026. The ECB spot rate was retrieved November 15, 2026, and the updated 3-month USD Treasury and EURIBOR rates were recorded as retrieved November 18, 2026. I documented the sources and verification notes in the Inputs worksheet. The 3-month rates were selected because their maturity more closely matches the company's 91-day receivable than the previously used 12-month benchmarks.
 
 | Input | Value | Source / Explanation |
 |---|---|---|
 | Foreign-currency receivable | €12,000,000 | Assigned scenario |
 | Spot exchange rate | 1.1052 USD/EUR | ECB EUR/USD reference rate, Nov. 13, 2026 |
 | Forward exchange rate | 1.1653 USD/EUR | Assigned 91-day forward quote |
-| USD interest rate | 4.650% | U.S. Treasury 1-year par yield proxy |
-| EUR interest rate | 3.328% | 12-month EURIBOR reference-rate proxy |
+| USD interest rate | 4.320% | U.S. Treasury 3-month yield proxy, Nov. 13, 2026; retrieved Nov. 18, 2026 |
+| EUR interest rate | 2.775% | 3-month EURIBOR benchmark proxy, Nov. 13, 2026; retrieved Nov. 18, 2026 |
 | Put and call strikes | 1.1052 USD/EUR | Assumed at-the-money strikes |
 | Put premium | 0.0147 USD/EUR | Assigned scenario assumption |
 | Call premium | 0.0199 USD/EUR | Assigned scenario assumption |
@@ -30,54 +30,53 @@ After updating the named input cells, I confirmed that the workbook recalculated
 | Calculation | Excel result |
 |---|---:|
 | Forward hedge proceeds | $13,983,600.00 |
-| EUR borrowed today | €11,899,892.81 |
-| EUR converted to USD | $13,151,761.54 |
-| Money-market hedge proceeds | $13,306,349.53 |
-| CIP-implied forward rate | 1.108862 USD/EUR |
-| Put hedge net proceeds at base spot | $13,083,926.57 |
+| EUR borrowed today | €11,916,411.34 |
+| EUR converted to USD | $13,170,017.81 |
+| Money-market hedge proceeds | $13,313,834.41 |
+| CIP-implied forward rate | 1.109486 USD/EUR |
+| Put hedge net proceeds at base spot | $13,084,073.71 |
 
 The forward hedge produces the highest USD proceeds among the hedging strategies at the base spot rate. It also provides a fixed dollar amount regardless of the ending exchange rate.
 
 ## 3. Interest-Rate-Parity Assessment
 
-The assigned forward rate is **1.165300 USD/EUR**, while the covered-interest-parity-implied forward rate is approximately **1.108862 USD/EUR**.
+The assigned forward rate is **1.165300 USD/EUR**, while the covered-interest-parity-implied forward rate is approximately **1.109486 USD/EUR**, using the updated 3-month interest-rate benchmarks.
 
-This creates a difference of approximately **0.056438 USD/EUR**, equivalent to about **$677,250 on the €12 million exposure**, or **4.84% relative to the quoted forward rate**.
+This creates a difference of approximately **0.055814 USD/EUR**, equivalent to about **$669,765 on the €12 million exposure**, or **4.79% relative to the assigned forward rate**.
 
 The difference exceeds the workbook's 0.05% tolerance and remains flagged as **NON-PARITY**.
 
-I retained the assigned forward quote rather than replacing it with the theoretical rate. The discrepancy may reflect the use of reference-rate proxies, differences in rate tenors or market conventions, or an assigned forward quote that does not represent a contemporaneous executable market price. It should not automatically be interpreted as an arbitrage opportunity.
+I retained the assigned forward quote rather than replacing it with the theoretical rate. Although the updated 3-month benchmarks better match the company's 91-day exposure, they are still reference-rate proxies rather than executable bank borrowing and lending quotes. The assigned forward quote has also not been independently requoted. Therefore, the remaining discrepancy should not automatically be interpreted as an arbitrage opportunity.
 
 ## 4. FX Hedging Lab Cross-Check
 
-I entered the updated scenario inputs into the course FX Hedging Lab and compared its outputs with my Excel workbook.
+I reran the course FX Hedging Lab using the updated 3-month USD interest rate of 4.320% and 3-month EUR interest rate of 2.775%, keeping the original scenario inputs unchanged.
 
-The following results matched within normal display rounding:
+The following calculations matched my Excel workbook within normal display rounding:
 
 - Forward hedge proceeds: $13,983,600.
-- Money-market EUR borrowing: approximately €11,899,893.
-- Spot conversion: approximately $13,151,762.
-- Money-market USD proceeds: approximately $13,306,350.
-- CIP-implied forward rate: approximately 1.1089 USD/EUR.
+- Money-market EUR borrowing: approximately €11,916,411.
+- Spot conversion: approximately $13,170,018.
+- Money-market USD proceeds: approximately $13,313,834.
+- CIP-implied forward rate: approximately 1.1095 USD/EUR.
 
-The FX Lab calculated put proceeds of approximately **$13,086,000**, compared with **$13,083,926.57** in Excel.
+The FX Lab also identified a parity gap of approximately $669,766, consistent with the workbook's approximately 4.79% forward-rate deviation. This discrepancy remains flagged because the assigned forward quote is not independently verified against executable market rates.
 
-The difference of approximately **$2,073.43** is attributable to the workbook financing the put premium for 91 days at the USD interest rate, whereas the lab's displayed calculation deducts the premium without the same financing adjustment.
+Using the updated USD interest rate, my workbook calculates put hedge net proceeds of $13,084,073.71. The corresponding put proceeds before financing the premium are $13,086,000, producing a $1,926.29 difference attributable to financing the put premium over 91 days at 4.320% annual interest.
 
-I retained the workbook's financed-premium convention and documented the difference rather than changing the model solely to match the lab.
+The put-premium financing explanation is based on my workbook calculation. The updated FX Lab screenshot confirms the forward, money-market, and parity results, but does not display the put result for an independent comparison.
+
+I retained the financed-premium convention and documented the difference rather than changing the workbook formulas solely to match the lab.
 
 ## 5. Sensitivity Analysis
 
-The workbook recalculated 11 settlement-rate scenarios from −5% to +5% around the updated spot rate of 1.1052 USD/EUR.
+The workbook recalculated 11 settlement-rate scenarios from −5% to +5% around the unchanged spot rate of 1.1052 USD/EUR.
 
-Across this range:
+Using the updated 3-month interest-rate benchmarks, the forward hedge provides fixed proceeds of $13,983,600 across all scenarios, while the money-market hedge provides fixed proceeds of $13,313,834.41.
 
-- The forward hedge remains fixed at $13,983,600.
-- The money-market hedge remains approximately $13,306,350.
-- Unhedged proceeds increase as the euro strengthens.
-- The put hedge provides a downside floor while preserving upside participation, less the financed premium.
+The put hedge provides a minimum of $13,084,073.71 after financing the premium, while allowing additional upside if the euro appreciates.
 
-The forward hedge generates the highest proceeds in all 11 tested scenarios. This result is specific to the assigned forward quote and the selected ±5% range; it does not establish that forwards always outperform options.
+Within the tested −5% to +5% range, the forward hedge continues to produce the highest USD proceeds. Although the forward hedge performs best under these assumptions, its quoted rate remains subject to the unresolved parity discrepancy.
 
 ## 6. Workbook Controls and Documentation
 
@@ -89,11 +88,13 @@ The formula-count checks help identify missing or overwritten formulas, but they
 
 ## 7. Conclusion
 
-Stage 4 confirmed that my workbook recalculates consistently after the market-reference inputs are updated. The FX Lab independently reproduced the main forward, money-market, and parity calculations.
+Stage 4 confirmed that my workbook recalculates consistently after updating the interest rates to 3-month benchmarks that better match the company's 91-day exposure. The FX Hedging Lab independently reproduced the main forward, money-market, and interest-rate-parity calculations.
 
-Two issues remain explicitly documented: the substantial difference between the assigned forward quote and the CIP-implied rate, and the smaller put-proceeds difference caused by the premium-financing convention.
+The updated results show that the forward hedge provides fixed proceeds of $13,983,600, compared with $13,313,834.41 from the money-market hedge and minimum put hedge proceeds of $13,084,073.71.
 
-For this scenario, the forward hedge provides the highest and most predictable USD proceeds within the tested range. I retained the original forward quote and documented the limitations of the market-rate proxies so the analysis remains transparent and reproducible.
+The forward hedge continues to provide the highest and most predictable USD proceeds within the tested scenarios. However, the assigned forward rate remains substantially higher than the CIP-implied rate, with a discrepancy of approximately 4.79%.
+
+Although the updated interest rates better match the hedging period, they remain benchmark proxies rather than executable borrowing and lending quotes. I retained the assigned forward rate and documented this limitation, along with the put-premium financing convention, to keep my analysis transparent and reproducible.
 
 ## 8. Market Data Sources and Limitations
 
@@ -107,7 +108,7 @@ The following sources were used to document the market reference inputs for Stag
 | Forward exchange rate | Assigned course scenario | No independently verified bank quote |
 | Put and call premiums | Assigned course scenario | Assumed premiums; not live option quotes |
 
-**Rate selection:** The 1-year U.S. Treasury yield and 12-month EURIBOR were selected as publicly available USD and EUR interest-rate benchmarks. However, they are not equivalent to executable 91-day borrowing and lending rates.
+**Rate selection:** I updated the USD interest rate to the 3-month U.S. Treasury yield of 4.320% and the EUR interest rate to the 3-month EURIBOR benchmark of 2.775%, using observations dated November 13, 2026, retrieved November 18, 2026. I selected these maturities because three months more closely matches the company's 91-day receivable than the previously used 1-year benchmarks. However, these rates are still publicly available reference-rate proxies rather than executable 91-day borrowing and lending quotes. The remaining maturity and market-rate differences are limitations of the analysis.
 
 **Forward-rate limitation:** The assigned forward rate of 1.1653 USD/EUR was retained for consistency with the original scenario. A contemporaneous bank requote has not been obtained. Therefore, the forward-rate input should not be interpreted as a verified executable market quote.
 
