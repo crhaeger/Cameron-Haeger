@@ -29,3 +29,30 @@ This portfolio will showcase selected finance, business, and academic projects t
 ## Resume
 
 View my resume here: [RESUME.md](RESUME.md)
+
+
+## Featured Finance Project: Foreign Exchange Hedging Analysis
+
+### EUR Receivable — Transmission-Parts Supplier
+
+This project analyzes foreign-exchange risk for a U.S. transmission-parts supplier expecting to receive €12 million from a European customer in 91 days.
+
+I developed an Excel-based financial model comparing an unhedged position, forward contract, money-market hedge, and EUR put option, with an additional EUR call comparison for a payable. I evaluated different future exchange-rate scenarios to understand the trade-offs between cash-flow certainty, hedging costs, and potential upside.
+
+I also used an independent AI analysis to validate the model's calculations and identify assumptions that would need further verification before making an actual financial decision.
+
+**Key finding:** Under the assigned scenario assumptions, the forward hedge produces $13,983,600 in fixed USD proceeds and performs best across the tested exchange rates. However, the assigned forward rate must be verified before executing a real hedge.
+
+### Project Files
+
+- **[FX Hedging Specification](capabilities/fx-hedging/spec.md)** — Model requirements, assumptions, and calculation methodology.
+- **[Excel Hedging Model](capabilities/fx-hedging/model.xlsx)** — Financial calculations and exchange-rate sensitivity analysis.
+- **[Market-Data Memo](data/2026-11-15-transmission-parts-market-data-memo.md)** — Exchange-rate observations, interest-rate inputs, and supporting assumptions.
+- **[Independent AI Output](analysis/2026-11-18-transmission-parts-muse-independent-output.md)** — Original independent hedge calculations produced by Muse.
+- **[Validation Analysis](analysis/2026-11-18-transmission-parts-validation-analysis.md)** — Comparison with Excel, hand calculations, sensitivity analysis, and specification retrospective.
+- **[CFO Decision Memo](docs/decisions/2026-11-18-transmission-parts-hedge-decision-memo.md)** — Financial recommendation and executive justification.
+- **[AI Prompt Log](prompt-log.md)** — Documentation of AI-assisted work and verification throughout the project.
+
+### Skills Demonstrated
+
+Financial modeling, foreign-exchange risk management, Excel analysis, scenario testing, covered interest parity, independent model validation, financial communication, and GitHub documentation.
