@@ -190,3 +190,18 @@ For the assigned academic scenario, the forward hedge remains the preferred stra
 
 The independent AI test demonstrated that my documentation was sufficient to reproduce the primary calculations, while also identifying assumptions and limitations that should be clarified in future revisions.
 
+## 7. Specification Retrospective
+
+Completing the independent Muse analysis helped me understand how important clear instructions and consistent assumptions are when building a financial model. My goal was to see whether another AI could reproduce my FX hedging calculations using only my Stage 2 specification and Stage 4 market-data memo, without having access to my Excel workbook.
+
+Overall, Muse successfully reproduced the main results, including the forward hedge, money-market hedge, and EUR put hedge. This showed me that my specification provided enough information for another reader to follow the calculations. However, the independent test also identified areas where my documentation could have been more specific.
+
+One issue was the difference between the original Stage 2 assumptions and the updated Stage 4 market data. For example, the option strike changed from 1.1188 to 1.1052 USD/EUR. Although Muse correctly used the updated value, I realized that my specification should explicitly state which inputs take priority when newer market observations become available.
+
+Another important finding was the difference between my assigned forward rate and the rate implied by covered interest parity. Muse calculated the difference correctly, but the documents did not establish whether the assigned forward was an executable quote. This made me realize that a model can produce mathematically correct results while still relying on assumptions that would need verification before making a real financial decision.
+
+Muse also identified missing details about option expiration, exercise terms, company-specific borrowing rates, and the financing treatment of option premiums. These were not major calculation errors, but they showed where another analyst might have to interpret or assume information that should have been clearly documented.
+
+If I were to create a second version of my specification, I would add a clear input-priority rule, identify which market values are verified versus assumed, define the option terms, and require an explicit comparison between the quoted and CIP-implied forward rates. I would also clarify the treatment of premium financing and include checks for missing or inconsistent data.
+
+The biggest lesson I learned from this stage is that **a reliable financial model depends on both accurate calculations and clear documentation**. Independent AI verification helped confirm my arithmetic while showing me how I could make my specification more transparent, reproducible, and useful for financial decision-making.
