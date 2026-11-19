@@ -205,3 +205,33 @@ Muse also identified missing details about option expiration, exercise terms, co
 If I were to create a second version of my specification, I would add a clear input-priority rule, identify which market values are verified versus assumed, define the option terms, and require an explicit comparison between the quoted and CIP-implied forward rates. I would also clarify the treatment of premium financing and include checks for missing or inconsistent data.
 
 The biggest lesson I learned from this stage is that **a reliable financial model depends on both accurate calculations and clear documentation**. Independent AI verification helped confirm my arithmetic while showing me how I could make my specification more transparent, reproducible, and useful for financial decision-making.
+
+## 8. Detailed Muse vs. Excel Scenario Verification
+
+To complete the independent validation, I compared Muse's calculated outcomes against the actual results displayed in my Excel Sensitivity worksheet. I used the −5%, 0%, and +5% settlement exchange-rate scenarios and checked all five modeled strategies.
+
+| Future spot (USD/EUR) | Strategy | Muse (USD) | Excel (USD) | Difference |
+|---|---|---:|---:|---:|
+| 1.04994 (−5%) | Unhedged | $12,599,280 | $12,599,280 | $0 |
+| 1.04994 (−5%) | Forward | $13,983,600 | $13,983,600 | $0 |
+| 1.04994 (−5%) | Money-market | $13,313,834 | $13,313,834 | $0 |
+| 1.04994 (−5%) | EUR put (net) | $13,084,074 | $13,084,074 | $0 |
+| 1.04994 (−5%) | EUR call payable cost | $12,840,688 | $12,840,688 | $0 |
+| 1.10520 (0%) | Unhedged | $13,262,400 | $13,262,400 | $0 |
+| 1.10520 (0%) | Forward | $13,983,600 | $13,983,600 | $0 |
+| 1.10520 (0%) | Money-market | $13,313,834 | $13,313,834 | $0 |
+| 1.10520 (0%) | EUR put (net) | $13,084,074 | $13,084,074 | $0 |
+| 1.10520 (0%) | EUR call payable cost | $13,503,808 | $13,503,808 | $0 |
+| 1.16046 (+5%) | Unhedged | $13,925,520 | $13,925,520 | $0 |
+| 1.16046 (+5%) | Forward | $13,983,600 | $13,983,600 | $0 |
+| 1.16046 (+5%) | Money-market | $13,313,834 | $13,313,834 | $0 |
+| 1.16046 (+5%) | EUR put (net) | $13,747,194 | $13,747,194 | $0 |
+| 1.16046 (+5%) | EUR call payable cost | $13,503,808 | $13,503,808 | $0 |
+
+**Verification method:** I compared the original Muse output with the values displayed in Excel's Sensitivity worksheet. The main receivable strategies appear in columns C–F, rows 6, 11, and 16. The EUR call payable comparison appears in column E, rows 20, 25, and 30.
+
+All 15 comparisons agree to the nearest dollar. The worksheet displays the settlement exchange rates to four decimal places, while the calculations use the underlying unrounded scenario rates.
+
+**Discrepancy assessment:** No numerical differences were found at the displayed precision. Muse also correctly distinguished the EUR call as a comparison for a hypothetical payable rather than a hedge for the company's EUR receivable. The remaining concerns relate to market-data assumptions and documentation, not disagreements between these scenario calculations.
+
+**Conclusion:** The independent AI results and Excel sensitivity calculations are consistent across all three tested exchange-rate scenarios. This strengthens confidence in the model's numerical accuracy, while the assigned forward quote and other market assumptions still require verification before an actual hedging transaction.
