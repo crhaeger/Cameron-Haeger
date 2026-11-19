@@ -87,3 +87,52 @@ After completing the audit, I saved the final corrected workbook as `model.xlsx`
 **My work:** Updated the Excel workbook with market reference inputs, documented sources and retrieval dates, checked the forward and money-market hedge calculations, compared sensitivity results with the FX Lab, and reviewed the final memo before committing it to GitHub.
 
 **Verification:** Confirmed the main calculations matched the FX Lab within rounding. Documented the 4.84% forward parity discrepancy and the $2,073.43 put-premium financing difference. Retained the assigned forward quote and documented the remaining limitations.
+
+## November 18, 2026 — Stage 5 Independent Validation and CFO Decision Memo
+ 
+**AI Tools Used:** Muse and ChatGPT  
+**Purpose:** Independently validate the FX hedging model, compare results with Excel, and prepare a financial recommendation.
+
+### Prompt 1: Independent Hedge Verification (Muse)
+
+**Prompt submitted:**
+
+Using only the two attached documents (my Stage 2 FX hedging specification and Stage 4 market-data memo), independently calculate the hedge outcomes for the company's EUR receivable.
+
+Calculate the unhedged position, forward hedge, money-market hedge, EUR put hedge, and EUR call comparison where applicable. Evaluate the outcomes at 2–3 future spot exchange rates, show your calculations, and recommend the most appropriate hedging strategy.
+
+Identify any missing information or ambiguities in the documents. Do not assume access to my Excel workbook or any previous calculations.
+
+**Result:** Muse independently calculated the hedge outcomes using the Stage 4 inputs. Its results matched the main Excel calculations, including the $13,983,600 forward proceeds, $13,313,834.41 money-market proceeds, and $13,084,073.71 minimum net put proceeds.
+
+**Output saved:** `analysis/2026-11-18-transmission-parts-muse-independent-output.md`
+
+### Prompt 2: Validation Analysis and Hand Calculations (ChatGPT)
+
+**Task:** Help organize the independent Muse results into a validation report, compare them with the Excel workbook, and document at least three manually verified hedge calculations.
+
+**Result:** Prepared comparison tables, verified the forward, money-market, and put calculations, evaluated three future exchange-rate scenarios, and documented the model's assumptions and limitations.
+
+**Output saved:** `analysis/2026-11-18-transmission-parts-validation-analysis.md`
+
+### Prompt 3: CFO Decision Memo (ChatGPT)
+
+**Task:** Help prepare a 2–4 page CFO decision memo summarizing the exposure, hedge outcomes, sensitivity analysis, recommendation, and executive justification.
+
+**Result:** Developed a memo recommending the forward hedge under the assigned scenario assumptions, subject to verifying an executable forward quote. The memo also addressed the approximately $669,766 difference between the assigned forward proceeds and the CIP-implied alternative.
+
+**Output saved:** `docs/decisions/2026-11-18-transmission-parts-hedge-decision-memo.md`
+
+### Prompt 4: Specification Retrospective (ChatGPT)
+
+**Task:** Reflect on the independent AI validation, identify ambiguities in the Stage 2 specification, and recommend improvements for a future version.
+
+**Result:** Identified opportunities to clarify input precedence, distinguish verified quotes from assumptions, define option terms, and improve documentation of premium financing and covered interest parity.
+
+**Output saved:** Section 7 of `analysis/2026-11-18-transmission-parts-validation-analysis.md`
+
+### Overall AI Use and Verification
+
+AI was used to independently calculate hedge outcomes, organize financial comparisons, and assist with writing and reviewing the final reports. The results were compared with the Excel model and supported by separate hand calculations.
+
+The final recommendation distinguishes between the assigned academic scenario and an actual transaction requiring verified market quotes. The independent AI output was preserved to make the validation process transparent and reproducible.
