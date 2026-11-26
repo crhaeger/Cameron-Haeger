@@ -84,6 +84,20 @@ I retained the Stage 3 workbook structure, including the named input ranges, hed
 
 The workbook also contains formula-count reconciliation controls and an audit trail for the market data and parity discrepancy.
 
+Following the November 22, 2026 feedback, I restored the formula in `Notes & Assumptions!B19` on November 25, 2026. The cell now dynamically references the named input range `F0_in` instead of displaying manually entered text.
+
+The updated workbook reconciliation shows the following results:
+
+| Workbook control | Cell | Result |
+|---|---|---|
+| Expected formula count | B27 | 148 |
+| Total formulas counted | B35 | 148 |
+| Formula count reconciliation | B42 | PASS |
+
+The expected and actual formula counts now match, confirming that the formula-count reconciliation passes. I also removed the stray text in `Forward Hedge!A4`.
+
+The documentation status in `Notes & Assumptions!C15` remains REVIEW because the forward-rate parity discrepancy is still unresolved. This is separate from the formula-count reconciliation, which now reads PASS.
+
 The formula-count checks help identify missing or overwritten formulas, but they do not independently prove that every formula is mathematically correct. The FX Lab comparison provides an additional calculation check.
 
 ## 7. Conclusion
